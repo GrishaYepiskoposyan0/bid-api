@@ -107,7 +107,7 @@ let BidService = class BidService {
         const bets = (await this.betRepository.find({
             relations: ['user', 'bid']
         })).filter(bet => bet.bid.id == bid.id);
-        return `The bid ${id} was win ${bets[bets.length - 1].user.username}`;
+        return `The bid ${id} was win ${bets[bets.length - 1].user.username} with price ${bets[bets.length - 1].price}`;
     }
 };
 BidService = __decorate([
