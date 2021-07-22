@@ -1,6 +1,6 @@
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { Product } from "src/product/entity/product.entity";
-import { Bet } from "src/bid/entity/bet.entity";
+import { Bet } from "src/bet/entity/bet.entity";
 
 @Entity()
 export class User {

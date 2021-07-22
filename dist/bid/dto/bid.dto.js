@@ -11,34 +11,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.BidDto = void 0;
 const swagger_1 = require("@nestjs/swagger");
-const product_entity_1 = require("../../product/entity/product.entity");
 class BidDto {
 }
 __decorate([
-    swagger_1.ApiProperty(),
-    __metadata("design:type", Number)
-], BidDto.prototype, "id", void 0);
+    swagger_1.ApiProperty({
+        isArray: true
+    }),
+    __metadata("design:type", Array)
+], BidDto.prototype, "productIds", void 0);
 __decorate([
     swagger_1.ApiProperty(),
     __metadata("design:type", Number)
 ], BidDto.prototype, "minPrice", void 0);
-__decorate([
-    swagger_1.ApiProperty({
-        default: false
-    }),
-    __metadata("design:type", Boolean)
-], BidDto.prototype, "isFinished", void 0);
-__decorate([
-    swagger_1.ApiProperty({
-        isArray: true
-    }),
-    __metadata("design:type", Array)
-], BidDto.prototype, "products", void 0);
-__decorate([
-    swagger_1.ApiProperty({
-        isArray: true
-    }),
-    __metadata("design:type", Array)
-], BidDto.prototype, "bets", void 0);
 exports.BidDto = BidDto;
 //# sourceMappingURL=bid.dto.js.map

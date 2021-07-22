@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import { Module } from "@nestjs/common";
+import { forwardRef, Module } from "@nestjs/common";
 
 import { TypeOrmModule } from "@nestjs/typeorm";
 import { Product } from "src/product/entity/product.entity";
@@ -11,16 +11,18 @@ import { User } from "src/user/entity/user.entity";
 import { BidController } from "./bid.controller";
 import { BidService } from "./bid.service";
 import { Bid } from "./entity/bid.entity";
-import { Bid_Product } from "./entity/bid_product"
-import { Bet } from "./entity/bet.entity";
+import { BetService } from "src/bet/bet.service";
+import { Bet } from "src/bet/entity/bet.entity";
+import { BetModule } from "src/bet/bet.module";
 
 @Module({
     imports:[
-        TypeOrmModule.forFeature([Bid, User, Product, Bid_Product, Bet]),
+        TypeOrmModule.forFeature([Bid, User, Product, Bet]),
         AuthModule,
-        ProductModule
+        ProductModule,
+        forwardRef(() => BetModule),
     ],
-    providers: [BidService, AuthService, ProductService],
+    providers: [BidService, ProductService, BetService],
     controllers: [BidController],
 
 })

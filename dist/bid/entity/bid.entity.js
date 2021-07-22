@@ -10,9 +10,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Bid = void 0;
+const bet_entity_1 = require("../../bet/entity/bet.entity");
 const product_entity_1 = require("../../product/entity/product.entity");
 const typeorm_1 = require("typeorm");
-const bet_entity_1 = require("./bet.entity");
 let Bid = class Bid {
 };
 __decorate([
@@ -29,7 +29,7 @@ __decorate([
 ], Bid.prototype, "isFinished", void 0);
 __decorate([
     typeorm_1.ManyToMany(() => product_entity_1.Product),
-    typeorm_1.JoinColumn(),
+    typeorm_1.JoinTable(),
     __metadata("design:type", Array)
 ], Bid.prototype, "products", void 0);
 __decorate([

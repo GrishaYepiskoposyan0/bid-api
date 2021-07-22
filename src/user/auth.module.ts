@@ -2,7 +2,7 @@
 import { Module } from "@nestjs/common";
 import { JwtModule } from "@nestjs/jwt/dist/jwt.module";
 import { TypeOrmModule } from "@nestjs/typeorm";
-import { Bet } from "src/bid/entity/bet.entity";
+import { Bet } from "src/bet/entity/bet.entity";
 import { Product } from "src/product/entity/product.entity";
 import { AuthController } from "./auth.controller";
 import { AuthService } from "./auth.service";

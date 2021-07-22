@@ -1,15 +1,14 @@
-import { User } from "src/user/entity/user.entity";
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
-import { Bid } from "./bid.entity";
+// import { User } from "src/user/entity/user.entity";
+// import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+// import { Bid } from "./bid.entity";
 
-@Entity()
-export class Bid_Product {
-    @PrimaryGeneratedColumn()
-    id: number
+// @Entity({
+//     name:"bid_products_product"
+// })
+// export class Bid_Product {
+//     @Column()
+//     bidId: number
 
-    @Column()
-    bidId: number
-
-    @Column()
-    productId: number
-}
+//     @Column()
+//     productId: number
+// }

@@ -1,5 +1,5 @@
+import { Bet } from "src/bet/entity/bet.entity";
 import { Product } from "src/product/entity/product.entity";
-import { Bet } from "./bet.entity";
 export declare class Bid {
     id: number;
     minPrice: number;

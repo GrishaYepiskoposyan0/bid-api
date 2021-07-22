@@ -10,13 +10,15 @@ exports.AppModule = void 0;
 const common_1 = require("@nestjs/common");
 const jwt_1 = require("@nestjs/jwt");
 const typeorm_1 = require("@nestjs/typeorm");
+const path_1 = require("path");
 const app_controller_1 = require("./app.controller");
 const app_service_1 = require("./app.service");
+const bet_controller_1 = require("./bet/bet.controller");
+const bet_module_1 = require("./bet/bet.module");
+const bet_entity_1 = require("./bet/entity/bet.entity");
 const bid_controller_1 = require("./bid/bid.controller");
 const bid_module_1 = require("./bid/bid.module");
-const bet_entity_1 = require("./bid/entity/bet.entity");
 const bid_entity_1 = require("./bid/entity/bid.entity");
-const bid_product_1 = require("./bid/entity/bid_product");
 const authorized_middleware_1 = require("./middleware/authorized.middleware");
 const product_entity_1 = require("./product/entity/product.entity");
 const product_controller_1 = require("./product/product.controller");
@@ -25,7 +27,7 @@ const auth_module_1 = require("./user/auth.module");
 const user_entity_1 = require("./user/entity/user.entity");
 let AppModule = class AppModule {
     configure(consumer) {
-        consumer.apply(authorized_middleware_1.AuthorizedMiddleware).forRoutes(bid_controller_1.BidController, product_controller_1.ProductController);
+        consumer.apply(authorized_middleware_1.AuthorizedMiddleware).forRoutes(bid_controller_1.BidController, product_controller_1.ProductController, bet_controller_1.BetController);
     }
 };
 AppModule = __decorate([
@@ -38,8 +40,14 @@ AppModule = __decorate([
                 username: 'root',
                 password: 'grish2003',
                 database: 'biddb',
-                entities: [user_entity_1.User, bid_entity_1.Bid, product_entity_1.Product, bid_product_1.Bid_Product, bet_entity_1.Bet],
+                entities: [user_entity_1.User, bid_entity_1.Bid, product_entity_1.Product, bet_entity_1.Bet],
                 synchronize: true,
+                migrations: [
+                    path_1.join(__dirname, './migrations/*{.ts}')
+                ],
+                cli: {
+                    migrationsDir: "src/migrations"
+                }
             }),
             jwt_1.JwtModule.register({
                 secret: 'sectretKey',
@@ -50,6 +58,7 @@ AppModule = __decorate([
             auth_module_1.AuthModule,
             product_module_1.ProductModule,
             bid_module_1.BidModule,
+            bet_module_1.BetModule
         ],
         controllers: [app_controller_1.AppController],
         providers: [app_service_1.AppService],

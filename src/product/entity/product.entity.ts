@@ -11,7 +11,7 @@ export class Product {
     name: string
 
     @ManyToMany(() => Bid)
-    bids: Bid[] 
+    bids: Bid[]
 
     @ManyToOne(() => User, user => user.products)
     user: User

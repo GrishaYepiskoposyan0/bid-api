@@ -1,1 +1,1 @@
-{"version":3,"file":"bid_product.js","sourceRoot":"","sources":["../../../src/bid/entity/bid_product.ts"],"names":[],"mappings":";;;;;;;;;;;;AAAA,+DAAmD;AACnD,qCAAiE;AAIjE,IAAa,WAAW,GAAxB,MAAa,WAAW;CASvB,CAAA;AAPG;IADC,gCAAsB,EAAE;;uCACf;AAGV;IADC,gBAAM,EAAE;;0CACI;AAGb;IADC,gBAAM,EAAE;;8CACQ;AARR,WAAW;IADvB,gBAAM,EAAE;GACI,WAAW,CASvB;AATY,kCAAW"}
+{"version":3,"file":"bid_product.js","sourceRoot":"","sources":["../../../src/bid/entity/bid_product.ts"],"names":[],"mappings":""}

@@ -1,10 +1,7 @@
-import { Body, Controller, Param, Post, Get, Req, Patch } from "@nestjs/common";
+import { Body, Controller, Param, Post, Get, Patch } from "@nestjs/common";
 import { ApiBearerAuth } from "@nestjs/swagger";
-import { Request } from "express";
 import { BidService } from "./bid.service";
-import { BetDto } from "./dto/bet.dto";
 import { BidDto } from "./dto/bid.dto";
-import { CreateBidDto } from "./dto/createBid.dto";
 
 @Controller('bid')
 @ApiBearerAuth()
@@ -14,31 +11,16 @@ export class BidController{
     ){}
 
     @Post()
-    create(@Body() bid: CreateBidDto){
-        return this.bidService.create(bid.productIds, bid.bidDto)
+    create(@Body() bid: BidDto){
+        return this.bidService.create(bid.productIds, bid.minPrice)
     }
-
-    @Get('bet/:bid_id')
-    findBetsForBid(@Param('bid_id') bidId: string){
-        return this.bidService.findBetsForBid(bidId)
-    }
-
-    @Get('all_bids')
+    
+    @Get()
     findAllBids(){
         return this.bidService.findAllBids()
     }
-
-    @Get('my_bets')
-    findAllMine(@Req() req: Request){
-        return this.bidService.findMyBets(req.user['user'])
-    }
-
-    @Post('bet/:bid_id')
-    makeABet(@Param('bid_id') bidId: string, @Body() betDto: BetDto, @Req() req: Request){
-        return this.bidService.makeABet(bidId ,betDto, req.user['user'])
-    }
     
-    @Patch('finishBid/:bidId')
+    @Patch('finish/:bidId')
     finish(@Param('bidId') id: string){
         return this.bidService.finishBid(id)
     }

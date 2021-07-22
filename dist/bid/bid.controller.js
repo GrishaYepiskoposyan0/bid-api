@@ -16,26 +16,17 @@ exports.BidController = void 0;
 const common_1 = require("@nestjs/common");
 const swagger_1 = require("@nestjs/swagger");
 const bid_service_1 = require("./bid.service");
-const bet_dto_1 = require("./dto/bet.dto");
-const createBid_dto_1 = require("./dto/createBid.dto");
+const bid_dto_1 = require("./dto/bid.dto");
 let BidController = class BidController {
     constructor(bidService) {
         this.bidService = bidService;
     }
     create(bid) {
-        return this.bidService.create(bid.productIds, bid.bidDto);
-    }
-    findBetsForBid(bidId) {
-        return this.bidService.findBetsForBid(bidId);
+        return this.bidService.create(bid.productIds, bid.minPrice);
     }
     findAllBids() {
+        console.log(1111111);
         return this.bidService.findAllBids();
-    }
-    findAllMine(req) {
-        return this.bidService.findMyBets(req.user['user']);
-    }
-    makeABet(bidId, betDto, req) {
-        return this.bidService.makeABet(bidId, betDto, req.user['user']);
     }
     finish(id) {
         return this.bidService.finishBid(id);
@@ -45,40 +36,17 @@ __decorate([
     common_1.Post(),
     __param(0, common_1.Body()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [createBid_dto_1.CreateBidDto]),
+    __metadata("design:paramtypes", [bid_dto_1.BidDto]),
     __metadata("design:returntype", void 0)
 ], BidController.prototype, "create", null);
 __decorate([
-    common_1.Get('bet/:bid_id'),
-    __param(0, common_1.Param('bid_id')),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String]),
-    __metadata("design:returntype", void 0)
-], BidController.prototype, "findBetsForBid", null);
-__decorate([
-    common_1.Get('all_bids'),
+    common_1.Get(),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", void 0)
 ], BidController.prototype, "findAllBids", null);
 __decorate([
-    common_1.Get('my_bets'),
-    __param(0, common_1.Req()),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object]),
-    __metadata("design:returntype", void 0)
-], BidController.prototype, "findAllMine", null);
-__decorate([
-    common_1.Post('bet/:bid_id'),
-    __param(0, common_1.Param('bid_id')),
-    __param(1, common_1.Body()),
-    __param(2, common_1.Req()),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String, bet_dto_1.BetDto, Object]),
-    __metadata("design:returntype", void 0)
-], BidController.prototype, "makeABet", null);
-__decorate([
-    common_1.Patch('finishBid/:bidId'),
+    common_1.Patch('finish/:bidId'),
     __param(0, common_1.Param('bidId')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),

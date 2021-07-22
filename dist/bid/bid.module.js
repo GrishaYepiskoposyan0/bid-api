@@ -18,18 +18,20 @@ const user_entity_1 = require("../user/entity/user.entity");
 const bid_controller_1 = require("./bid.controller");
 const bid_service_1 = require("./bid.service");
 const bid_entity_1 = require("./entity/bid.entity");
-const bid_product_1 = require("./entity/bid_product");
-const bet_entity_1 = require("./entity/bet.entity");
+const bet_service_1 = require("../bet/bet.service");
+const bet_entity_1 = require("../bet/entity/bet.entity");
+const bet_module_1 = require("../bet/bet.module");
 let BidModule = class BidModule {
 };
 BidModule = __decorate([
     common_1.Module({
         imports: [
-            typeorm_1.TypeOrmModule.forFeature([bid_entity_1.Bid, user_entity_1.User, product_entity_1.Product, bid_product_1.Bid_Product, bet_entity_1.Bet]),
+            typeorm_1.TypeOrmModule.forFeature([bid_entity_1.Bid, user_entity_1.User, product_entity_1.Product, bet_entity_1.Bet]),
             auth_module_1.AuthModule,
-            product_module_1.ProductModule
+            product_module_1.ProductModule,
+            common_1.forwardRef(() => bet_module_1.BetModule),
         ],
-        providers: [bid_service_1.BidService, auth_service_1.AuthService, product_service_1.ProductService],
+        providers: [bid_service_1.BidService, product_service_1.ProductService, bet_service_1.BetService],
         controllers: [bid_controller_1.BidController],
     })
 ], BidModule);
